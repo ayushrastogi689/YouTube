@@ -1,0 +1,16 @@
+{
+    "css.lint.unknownAtRules": "ignore",
+    "reactSnippets.settings.prettierEnabled": true,
+    "emmet.includeLanguages": {
+        "html": "html",
+        "javascript": "javascriptreact"
+    },
+    "tailwindCSS.includeLanguages": {
+        "html": "html",
+        "javascript": "javascript",
+        "css": "css"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+}
