@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import VideoCard from "./VideoCard"
 import { YOUTUBE_VIDEO_API } from '../utils/constant';
+import { Link } from 'react-router-dom';
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -20,7 +21,9 @@ const VideoContainer = () => {
     {
       videos.length > 0 &&
         videos.map((video) => (
+         <Link to={"/watch?v="+video.id}> 
           <VideoCard key={video.id} info={video} />
+         </Link>
         )
       )
     }
