@@ -1,12 +1,15 @@
 import React from 'react'
 import Sidebar from "./Sidebar";
-import MainContainer from './MainContainer';
+import {Outlet} from "react-router-dom"
+
 
 const Body = () => {
+  // Indide Body either we can have <MainContainer /> or we will have <WatchPage /> for watching video
+  // These two childern : [<MainContainer />, <WatchPage />] will go inside <Outlet />      
   return (
     <div className='flex'>
       <Sidebar />
-      <MainContainer />
+      <Outlet />
     </div>
   )
 }
