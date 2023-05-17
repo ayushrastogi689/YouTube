@@ -37,7 +37,7 @@ const Head = () => {
       </div>
       <div className="col-span-1">
         <img
-        className="h-6"
+        className="h-6 cursor-pointer"
           src="https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png"
           alt="user-icon"
         />
