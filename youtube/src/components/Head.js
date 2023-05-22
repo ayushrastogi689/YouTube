@@ -64,14 +64,15 @@ const Head = () => {
             value = {searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
+          <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full"> 🔍 
+          </button>
         </div>
-        <div className="fixed bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
+        <div className="fixed bg-white px-2 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
         {
           suggestion.map((suggest) => (
           <li key={suggest} className ="px-3 py-2 shadow-sm hover:bg-gray-100"> 
-           {suggest} 
+          🔍 {suggest} 
           </li>
         ))}
         </ul>
