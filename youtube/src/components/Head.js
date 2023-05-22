@@ -27,9 +27,9 @@ const Head = () => {
       clearTimeout(timer);
     }
     // Otherwise reject the api call 
-  }, [searchQuery]) // We have to make the API call every time our search query changes.
+  },) // We have to make the API call every time our search query changes.
 
-  async function getSearchSuggestion () {
+  const getSearchSuggestion = async () =>{
       // For checking
     console.log("API Call - " +searchQuery);
     const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
