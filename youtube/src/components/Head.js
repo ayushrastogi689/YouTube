@@ -14,7 +14,7 @@ const Head = () => {
   }; 
 
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [suggestion, setSuggestion] = useState([])
   // Adding a Debounce in our Search bar within the useEffect's API call
   useEffect(() => {
     // Make an API call after every key press if the difference between two keyPress is > 400ms
@@ -33,10 +33,9 @@ const Head = () => {
     console.log("API Call - " +searchQuery);
     const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await response.json();
-    console.log(jsonData[1]);
+    // console.log(jsonData[1]);
+    setSuggestion(jsonData[1]);
   }
-
-
 
 
 
@@ -66,18 +65,11 @@ const Head = () => {
           />
           <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
         </div>
-        <div className="bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
+        <div className="fixed bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 11</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 12</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 12 Pro</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 13</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 14</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 14 Max</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 14 Pro Max</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone Charger</li>
-          <li className ="py-2 shadow-sm hover:bg-gray-100">Mag Safe</li>
+        {suggestion.map((suggest) => {
+          <li key={suggest} className ="px-3 py-2 shadow-sm hover:bg-gray-100"> <img src="../assets/icons/search-icon.svg" alt="search" className="px-1" /> {suggest} </li>
+        })}
         </ul>
         </div>
       </div>
