@@ -59,11 +59,27 @@ const Head = () => {
         </a>
       </div>
       <div className="col-span-10 mb-1">
-        <input className = "w-1/2 p-0.5 border border-gray-400 rounded-l-full" type="text"
-          value = {searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
+        <div>
+          <input className = "w-1/2 p-0.5 border border-gray-400 rounded-l-full" type="text"
+            value = {searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
+        </div>
+        <div className="fixed bg-white px-5 py-2 w-[37rem] shadow-lg rounded-l-full border border-gray-100">
+        <ul>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 11</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 12</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 12 Pro</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 13</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 14</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 14 Max</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 14 Pro Max</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone Charger</li>
+          <li className ="py-2 shadow-sm hover:bg-gray-100">Mag Safe</li>
+        </ul>
+        </div>
       </div>
       <div className="col-span-1">
         <img
