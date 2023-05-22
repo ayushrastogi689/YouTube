@@ -68,9 +68,10 @@ const Head = () => {
         </div>
         <div className="fixed bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
-        {suggestion.map((suggest) => (
+        {
+          suggestion.map((suggest) => (
           <li key={suggest} className ="px-3 py-2 shadow-sm hover:bg-gray-100"> 
-            <img src="../assets/icons/search-icon.svg" alt="search" className="px-1" /> {suggest} 
+           {suggest} 
           </li>
         ))}
         </ul>
