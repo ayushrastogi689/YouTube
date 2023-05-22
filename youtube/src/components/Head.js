@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch } from "react-redux"; // react-redux is a library
 import { toggleMenu } from "../utils/appSlice";
 
@@ -12,7 +12,9 @@ const Head = () => {
     dispatch(toggleMenu())
   }; 
 
-
+  const [searchQuery, setSearchQuery] = useState("");
+  // For checking
+  console.log(searchQuery);
 
   return (
     <div className="grid grid-flow-col p-3 m-2 shadow-lg">
@@ -32,7 +34,10 @@ const Head = () => {
         </a>
       </div>
       <div className="col-span-10 mb-1">
-        <input className = "w-1/2 p-0.5 border border-gray-400 rounded-l-full" type="text" />
+        <input className = "w-1/2 p-0.5 border border-gray-400 rounded-l-full" type="text"
+          value = {searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
       </div>
       <div className="col-span-1">
