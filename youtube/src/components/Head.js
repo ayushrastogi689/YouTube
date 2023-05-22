@@ -39,17 +39,17 @@ const Head = () => {
   }
 
   return (
-    <div className="grid grid-flow-col p-4 m-2 shadow-lg">
+    <div className="grid grid-flow-col p-4 m-1.5 shadow-lg">
       <div className="flex col-span-1">
         <img
-          className="h-5 my-0.5 cursor-pointer"
+          className="h-6 my-0.5 cursor-pointer"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKi1yF1PLdUkait_4ixaBVkz3jeyfD_-yb-g&usqp=CAU"
           alt="hamburger-img"
           onClick={() => toggleMenuHandler()} // Dispatch and action
         />
         <a href="/">
         <img
-          className="h-6 mx-4"
+          className="h-7 mx-8"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/512px-YouTube_Logo_2017.svg.png?20220605194644"
           alt="YouTube_logo"
         />
@@ -57,11 +57,11 @@ const Head = () => {
       </div>
       <div className="col-span-10 mb-1 px-10">
         <div>
-          <input className = "px-5 w-1/2 p-2 border border-gray-400 rounded-l-full" type="text"
+          <input className = "px-5 w-1/2 py-1.5 border border-gray-400 rounded-l-full" type="text"
             value = {searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="px-5 py-2 bg-gray-100 border border-gray-400 rounded-r-full"> 🔍 
+          <button className="px-5 py-1.5 bg-gray-100 border border-gray-400 rounded-r-full"> 🔍 
           </button>
         </div>
         <div className="fixed bg-white px-2 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
@@ -77,7 +77,7 @@ const Head = () => {
       </div>
       <div className="col-span-1">
         <img
-        className="h-6 cursor-pointer"
+        className="h-7 cursor-pointer"
           src="https://www.seekpng.com/png/small/41-410093_circled-user-icon-user-profile-icon-png.png"
           alt="user-icon"
         />
