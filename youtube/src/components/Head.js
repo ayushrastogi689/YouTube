@@ -65,8 +65,8 @@ const Head = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
-        
-        <div className="fixed bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
+        </div>
+        <div className="bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
           <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone</li>
           <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 11</li>
@@ -80,7 +80,6 @@ const Head = () => {
           <li className ="py-2 shadow-sm hover:bg-gray-100">Mag Safe</li>
         </ul>
         </div>
-       </div> 
       </div>
       <div className="col-span-1">
         <img
