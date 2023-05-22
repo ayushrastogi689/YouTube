@@ -14,7 +14,8 @@ const Head = () => {
   }; 
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [suggestion, setSuggestion] = useState([])
+  const [suggestion, setSuggestion] = useState([]);
+
   // Adding a Debounce in our Search bar within the useEffect's API call
   useEffect(() => {
     // Make an API call after every key press if the difference between two keyPress is > 400ms
@@ -67,9 +68,11 @@ const Head = () => {
         </div>
         <div className="fixed bg-white px-5 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
-        {suggestion.map((suggest) => {
-          <li key={suggest} className ="px-3 py-2 shadow-sm hover:bg-gray-100"> <img src="../assets/icons/search-icon.svg" alt="search" className="px-1" /> {suggest} </li>
-        })}
+        {suggestion.map((suggest) => (
+          <li key={suggest} className ="px-3 py-2 shadow-sm hover:bg-gray-100"> 
+            <img src="../assets/icons/search-icon.svg" alt="search" className="px-1" /> {suggest} 
+          </li>
+        ))}
         </ul>
         </div>
       </div>
