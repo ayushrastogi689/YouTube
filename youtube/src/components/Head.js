@@ -14,8 +14,6 @@ const Head = () => {
   }; 
 
   const [searchQuery, setSearchQuery] = useState("");
-  // For checking
-  console.log(searchQuery);
 
   // Adding a Debounce in our Search bar within the useEffect's API call
   useEffect(() => {
@@ -31,9 +29,11 @@ const Head = () => {
   }, [searchQuery]) // We have to make the API call every time our search query changes.
 
   async function getSearchSuggestion () {
+      // For checking
+    console.log("API Call - " +searchQuery);
     const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await response.json();
-    console.log(jsonData);
+    console.log(jsonData[1]);
   }
 
 
