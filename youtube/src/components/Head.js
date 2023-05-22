@@ -25,9 +25,9 @@ const Head = () => {
 
     return () => {
       clearTimeout(timer);
-    }
+    };
     // Otherwise reject the api call 
-  },) // We have to make the API call every time our search query changes.
+  },[searchQuery]) // We have to make the API call every time our search query changes.
 
   const getSearchSuggestion = async () =>{
       // For checking
