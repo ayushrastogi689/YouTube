@@ -30,19 +30,16 @@ const Head = () => {
   },[searchQuery]) // We have to make the API call every time our search query changes.
 
   const getSearchSuggestion = async () =>{
-      // For checking
-    console.log("API Call - " +searchQuery);
+    // For checking
+    // console.log("API Call - " +searchQuery);
     const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await response.json();
     // console.log(jsonData[1]);
     setSuggestion(jsonData[1]);
   }
 
-
-
-
   return (
-    <div className="grid grid-flow-col p-3 m-2 shadow-lg">
+    <div className="grid grid-flow-col p-4 m-2 shadow-lg">
       <div className="flex col-span-1">
         <img
           className="h-5 my-0.5 cursor-pointer"
@@ -58,13 +55,13 @@ const Head = () => {
         />
         </a>
       </div>
-      <div className="col-span-10 mb-1">
+      <div className="col-span-10 mb-1 px-10">
         <div>
-          <input className = "w-1/2 p-0.5 border border-gray-400 rounded-l-full" type="text"
+          <input className = "px-5 w-1/2 p-2 border border-gray-400 rounded-l-full" type="text"
             value = {searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full"> 🔍 
+          <button className="px-5 py-2 bg-gray-100 border border-gray-400 rounded-r-full"> 🔍 
           </button>
         </div>
         <div className="fixed bg-white px-2 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
