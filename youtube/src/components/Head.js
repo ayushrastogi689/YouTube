@@ -66,7 +66,7 @@ const Head = () => {
           />
           <button className="p-0.5 bg-gray-100 border border-gray-400 rounded-r-full">Search</button>
         </div>
-        <div className="fixed bg-white px-5 py-2 w-[37rem] shadow-lg rounded-l-full border border-gray-100">
+        <div className="fixed bg-white px-5 py-2 w-[37rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
           <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone</li>
           <li className ="py-2 shadow-sm hover:bg-gray-100">iPhone 11</li>
