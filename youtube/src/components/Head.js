@@ -15,6 +15,7 @@ const Head = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestion, setSuggestion] = useState([]);
+  const [showSuggestion, setShowSuggestion] = useState(false);
 
   // Adding a Debounce in our Search bar within the useEffect's API call
   useEffect(() => {
@@ -57,14 +58,17 @@ const Head = () => {
       </div>
       <div className="col-span-10 mb-1 px-10">
         <div>
-          <input className = "px-5 w-1/2 py-1.5 border border-gray-400 rounded-l-full" type="text"
-            value = {searchQuery}
+          <input className = "px-5 w-1/2 py-1.5 border border-gray-400 rounded-l-full" 
+            type="text" placeholder="Search" value = {searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestion(true)}
+            onBlur={() => setShowSuggestion(false)}
           />
           <button className="px-5 py-1.5 bg-gray-100 border border-gray-400 rounded-r-full"> 🔍 
           </button>
         </div>
-        <div className="fixed bg-white px-2 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
+        { showSuggestion && (
+          <div className="absolute bg-white px-2 py-2 w-[35rem] shadow-lg rounded-lg border border-gray-100">
         <ul>
         {
           suggestion.map((suggest, index) => (
@@ -73,7 +77,8 @@ const Head = () => {
           </li>
         ))}
         </ul>
-        </div>
+        </div>)
+        }
       </div>
       <div className="col-span-1">
         <img
