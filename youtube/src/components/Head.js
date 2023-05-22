@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch } from "react-redux"; // react-redux is a library
 import { toggleMenu } from "../utils/appSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constant";
 
 const Head = () => {
   // dispatch will come from our useDispatch() hook, useDispatch() hook comes from our react-redux library
@@ -15,6 +16,30 @@ const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   // For checking
   console.log(searchQuery);
+
+  // Adding a Debounce in our Search bar within the useEffect's API call
+  useEffect(() => {
+    // Make an API call after every key press if the difference between two keyPress is > 400ms
+    const timer = setTimeout(()=> {
+      getSearchSuggestion();
+    }, 400)
+
+    return () => {
+      clearTimeout(timer);
+    }
+    // Otherwise reject the api call 
+  }, [searchQuery]) // We have to make the API call every time our search query changes.
+
+  async function getSearchSuggestion () {
+    const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const jsonData = await response.json();
+    console.log(jsonData);
+  }
+
+
+
+
+
 
   return (
     <div className="grid grid-flow-col p-3 m-2 shadow-lg">
