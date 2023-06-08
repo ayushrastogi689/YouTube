@@ -52,8 +52,8 @@ const Head = () => {
 
     // After making the API call we should dispatch an action to update the cache
     dispatch(cacheResults({
-      [searchQuery] : json[1],
-    })
+      [searchQuery] : json[1]
+    });
   }
 
   return (
