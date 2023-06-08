@@ -14,7 +14,7 @@ const Head = () => {
     dispatch(toggleMenu())
   }; 
 
-  const [searchQueryText, setSearchQueryText] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [suggestion, setSuggestion] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
 
@@ -27,8 +27,8 @@ const Head = () => {
     const timer = setTimeout(()=> {
       // Here we will try to get the cache and check if the searchQueryText is already present in cache or not
       // If it is present then return the searchCache of searchQueryText
-        if(searchCache[searchQueryText]) {
-         setSuggestion(searchCache[searchQueryText]); 
+        if(searchCache[searchQuery]) {
+         setSuggestion(searchCache[searchQuery]); 
         }
         // else we should make an API call
         else {
@@ -40,19 +40,19 @@ const Head = () => {
       clearTimeout(timer);
     };
     // Otherwise reject the api call 
-  },[searchQueryText]) // We have to make the API call every time our search query changes.
+  },[searchQuery]) // We have to make the API call every time our search query changes.
 
   const getSearchSuggestion = async () =>{
     // For checking
     // console.log("API Call - " +searchQueryText);
-    const response = await fetch(YOUTUBE_SEARCH_API + searchQueryText);
+    const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const jsonData = await response.json();
     // console.log(jsonData[1]);
     setSuggestion(jsonData[1]);
 
     // After making the API call we should dispatch an action to update the cache
     dispatch(cacheResults({
-      [searchQueryText] : json[1],
+      [searchQuery] : json[1],
     })
   }
 
@@ -76,8 +76,8 @@ const Head = () => {
       <div className="col-span-10 mb-1 px-10">
         <div>
           <input className = "px-5 w-1/2 py-1.5 border border-gray-400 rounded-l-full" 
-            type="text" placeholder="Search" value = {searchQueryText}
-            onChange={(e) => setSearchQueryText(e.target.value)}
+            type="text" placeholder="Search" value = {searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestion(true)}
             onBlur={() => setShowSuggestion(false)}
           />
