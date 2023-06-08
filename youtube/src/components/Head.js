@@ -58,7 +58,7 @@ const Head = () => {
   }
 
   return (
-    <div className="grid grid-flow-col p-4 m-1.5 shadow-lg">
+    <div className="grid grid-flow-col p-4 shadow-lg">
       <div className="flex col-span-1">
         <img
           className="h-6 my-0.5 cursor-pointer"
