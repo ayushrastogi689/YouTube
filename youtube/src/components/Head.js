@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useDispatch } from "react-redux"; // react-redux is a library
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constant";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   // dispatch will come from our useDispatch() hook, useDispatch() hook comes from our react-redux library
@@ -13,30 +14,46 @@ const Head = () => {
     dispatch(toggleMenu())
   }; 
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryText, setSearchQueryText] = useState("");
   const [suggestion, setSuggestion] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
+
+  // Scbscribing to our store using useSelector() hook.
+  const searchCache = useSelector((store) => store.search);
 
   // Adding a Debounce in our Search bar within the useEffect's API call
   useEffect(() => {
     // Make an API call after every key press if the difference between two keyPress is > 400ms
     const timer = setTimeout(()=> {
-      getSearchSuggestion();
+      // Here we will try to get the cache and check if the searchQueryText is already present in cache or not
+      // If it is present then return the searchCache of searchQueryText
+        if(searchCache[searchQueryText]) {
+         setSuggestion(searchCache[searchQueryText]); 
+        }
+        // else we should make an API call
+        else {
+          getSearchSuggestion();
+        }
     }, 400)
 
     return () => {
       clearTimeout(timer);
     };
     // Otherwise reject the api call 
-  },[searchQuery]) // We have to make the API call every time our search query changes.
+  },[searchQueryText]) // We have to make the API call every time our search query changes.
 
   const getSearchSuggestion = async () =>{
     // For checking
-    // console.log("API Call - " +searchQuery);
-    const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    // console.log("API Call - " +searchQueryText);
+    const response = await fetch(YOUTUBE_SEARCH_API + searchQueryText);
     const jsonData = await response.json();
     // console.log(jsonData[1]);
     setSuggestion(jsonData[1]);
+
+    // After making the API call we should dispatch an action to update the cache
+    dispatch(cacheResults({
+      [searchQueryText] : json[1],
+    })
   }
 
   return (
@@ -59,8 +76,8 @@ const Head = () => {
       <div className="col-span-10 mb-1 px-10">
         <div>
           <input className = "px-5 w-1/2 py-1.5 border border-gray-400 rounded-l-full" 
-            type="text" placeholder="Search" value = {searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            type="text" placeholder="Search" value = {searchQueryText}
+            onChange={(e) => setSearchQueryText(e.target.value)}
             onFocus={() => setShowSuggestion(true)}
             onBlur={() => setShowSuggestion(false)}
           />
