@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useDispatch } from "react-redux"; // react-redux is a library
+import { useDispatch, useSelector } from "react-redux"; // react-redux is a library
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constant";
 import { cacheResults } from "../utils/searchSlice";
