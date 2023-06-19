@@ -10,7 +10,7 @@ const VideoCard = ({info}) => {
     <div className='p-2 m-2 w-72 shadow-lg rounded-lg'>
        <img className='rounded-lg' src={thumbnails.medium.url} alt="thumbnail" />
       <ul>
-        <li className='font-bold'>{title}</li>
+        <li className='font-bold'>{title.substring(0,36)}</li>
         <li>{channelTitle}</li>
         <li>{statistics.viewCount} views</li>
       </ul>
